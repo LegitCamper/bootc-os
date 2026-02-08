@@ -22,6 +22,7 @@ packages=(
   pipewire-plugin-libcamera
 
   # system 
+  glibc-langpack-en
   audit
   audispd-plugins
   cifs-utils
@@ -60,7 +61,6 @@ packages=(
   tlp-rdw
   tlp
   thermald
-  power-profiles-daemon
   ksmtuned
   cachyos-ksm-settings
   cachyos-settings
@@ -116,7 +116,13 @@ packages=(
   podman
 )
 
-dnf5 -y install "${packages[@]}"
+dnf5 -y install "${packages[@]}" --exclude=usbmuxd
+
+packages=(
+  console-login-helper-messages
+)
+
+dnf5 -y remove "${packages[@]}"
 
 dconf update
 

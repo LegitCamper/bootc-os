@@ -5,8 +5,8 @@ system_services=(
   podman.socket
   greetd.service
   chronyd.service
-  preload.service
   thermald.service
+  tlp.service
   firewalld.service
   podman-tcp.service
   flatpak-theme.service

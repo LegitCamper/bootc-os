@@ -2,8 +2,6 @@ set -euxo pipefail
 shopt -s nullglob
 
 systemctl set-default graphical.target
-authselect select sssd with-systemd-homed with-faillock without-nullok
-authselect apply-changes
 
 # So it won't reboot on Update
 sed -i 's|^ExecStart=.*|ExecStart=/usr/bin/bootc update --quiet|' /usr/lib/systemd/system/bootc-fetch-apply-updates.service
