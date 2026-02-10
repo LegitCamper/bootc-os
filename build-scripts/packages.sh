@@ -43,7 +43,6 @@ packages=(
 
   # desktop
   jetbrains-mono-fonts
-  nerd-fonts
   niri
   waybar
   gnome-keyring
@@ -127,3 +126,8 @@ dnf5 -y remove "${packages[@]}"
 dconf update
 
 flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+
+curl -fLo install.sh https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh
+chmod +x install.sh
+./install.sh JetBrainsMono
+rm install.sh
