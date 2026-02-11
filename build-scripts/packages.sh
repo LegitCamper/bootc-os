@@ -127,7 +127,16 @@ dconf update
 
 flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 
-curl -fLo install.sh https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh
-chmod +x install.sh
-./install.sh JetBrainsMono
-rm install.sh
+cd /usr/share/fonts
+mkdir -p JetBrainsMonoNerdFont
+cd JetBrainsMonoNerdFont
+
+curl -L -o JetBrainsMono.tar.xz \
+  https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+
+tar -xJf JetBrainsMono.tar.xz --strip-components=0
+rm JetBrainsMono.tar.xz
+
+# Rebuild font cache
+fc-cache -fv
+
