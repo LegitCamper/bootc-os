@@ -19,13 +19,13 @@ mv Kvantum/themes/* /usr/share/Kvantum/
 rm -r Kvantum
 
 
-# grub theme
-git clone https://github.com/catppuccin/grub.git
-cp -r grub/src/* /usr/share/grub/themes/
-rm -rf grub
+# # grub theme
+# git clone https://github.com/catppuccin/grub.git
+# cp -r grub/src/* /usr/share/grub/themes/
+# rm -rf grub
 
-GRUB_THEME_PATH="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
-GRUB_DEFAULT_FILE="/etc/default/grub"
-echo "GRUB_THEME=\"$GRUB_THEME_PATH\"" >> "$GRUB_DEFAULT_FILE"
+# GRUB_THEME_PATH="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
+# GRUB_DEFAULT_FILE="/etc/default/grub"
+# echo "GRUB_THEME=\"$GRUB_THEME_PATH\"" >> "$GRUB_DEFAULT_FILE"
 
-grub2-mkconfig -o /boot/grub2/grub.cfg
+# grub2-mkconfig -o /boot/grub2/grub.cfg
