@@ -4,7 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/libexec/myos-flatpak-user-sync
+ExecStart=/usr/libexec/flatpak-package-installer.sh
 
 [Install]
 WantedBy=default.target

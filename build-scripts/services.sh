@@ -19,6 +19,7 @@ user_services=(
   flathub-setup.service
   gnome-keyring-daemon.socket
   gnome-keyring-daemon.service
+  flatpak-package-installer.service
 )
 
 mask_services=(

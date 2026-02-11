@@ -41,6 +41,7 @@ packages=(
   htop
   stow
   git
+  steam-devices
 
   # desktop
   jetbrains-mono-fonts
