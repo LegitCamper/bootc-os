@@ -40,6 +40,7 @@ packages=(
   tailscale
   htop
   stow
+  git
 
   # desktop
   jetbrains-mono-fonts
@@ -76,6 +77,7 @@ packages=(
   # storage
   jmtpfs
   gvfs-mtp
+  libimobiledevice
   udisks2
   udiskie
 

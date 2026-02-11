@@ -15,15 +15,13 @@ fc-cache -fv
 
 # configures kvantum theme for qt
 git clone https://github.com/catppuccin/Kvantum.git
-mkdir /usr/share/Kvantum
 mv Kvantum/themes/* /usr/share/Kvantum/
 rm -r Kvantum
 
 
 # grub theme
-sudo mkdir -p /usr/share/grub/themes
 git clone https://github.com/catppuccin/grub.git
-sudo cp -r grub/src/* /usr/share/grub/themes/
+cp -r grub/src/* /usr/share/grub/themes/
 rm -rf grub
 
 GRUB_THEME_PATH="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
