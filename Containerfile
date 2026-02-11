@@ -12,6 +12,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     bash -euxo pipefail -c '\
       /ctx/dnf.sh && \
       /ctx/packages.sh && \
+      /ctx/customize.sh && \
       /ctx/kernel.sh && \
       /ctx/services.sh && \
       /ctx/initramfs.sh && \

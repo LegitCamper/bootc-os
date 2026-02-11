@@ -1,0 +1,10 @@
+[Unit]
+Description=Ensure user Flatpaks are installed
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/myos-flatpak-user-sync
+
+[Install]
+WantedBy=default.target
