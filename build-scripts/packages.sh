@@ -13,12 +13,12 @@ packages=(
   alsa-firmware
   alsa-sof-firmware
   alsa-tools-firmware
-
   pipewire
   pipewire-pulseaudio
   pipewire-alsa
   pipewire-jack-audio-connection-kit
   wireplumber
+  pulseaudio
   pipewire-plugin-libcamera
 
   # system 
