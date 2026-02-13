@@ -112,6 +112,7 @@ packages=(
   qt5-qtgraphicaleffects
   qt5-qtquickcontrols2
   qt5-qtsvg
+  gnome-themes-extra # gtk Adwaita-dark
 
   # packages
   flatpak
