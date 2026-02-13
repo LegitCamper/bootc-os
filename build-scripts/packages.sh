@@ -57,6 +57,7 @@ packages=(
   thunar
   swaybg
   alacritty
+  dunst
 
   # battery/perf
   tlp-rdw
