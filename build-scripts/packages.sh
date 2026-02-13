@@ -18,8 +18,8 @@ packages=(
   pipewire-alsa
   pipewire-jack-audio-connection-kit
   wireplumber
-  pulseaudio
   pipewire-plugin-libcamera
+  pavucontrol-qt
 
   # system 
   glibc-langpack-en
