@@ -58,6 +58,10 @@ packages=(
   swaybg
   alacritty
   dunst
+  brightnessctl
+  pamixer
+  network-manager-applet
+  libappindicator-gtk3
 
   # battery/perf
   tlp-rdw
