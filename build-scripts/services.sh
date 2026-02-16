@@ -12,6 +12,7 @@ system_services=(
   flatpak-theme.service
   systemd-resolved.service
   bootc-fetch-apply-updates.service
+  tailscaled.service
 )
 
 user_services=(
