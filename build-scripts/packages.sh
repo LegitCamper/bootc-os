@@ -118,6 +118,9 @@ packages=(
   qt5-qtsvg
   gnome-themes-extra # gtk Adwaita-dark
 
+  # print
+  hplip
+
   # packages
   flatpak
   toolbox
