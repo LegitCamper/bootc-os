@@ -42,6 +42,8 @@ packages=(
   stow
   git
   steam-devices
+  lxqt-policykit
+  polkit-qt
 
   # desktop
   jetbrains-mono-fonts
