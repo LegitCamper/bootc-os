@@ -125,6 +125,10 @@ packages=(
   flatpak
   toolbox
   podman
+
+  # disk tools
+  gnome-disk-utility
+  mediawriter
 )
 
 dnf5 -y install "${packages[@]}" --exclude=usbmuxd

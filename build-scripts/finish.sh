@@ -32,3 +32,4 @@ s|^DEFAULT_HOSTNAME=.*|DEFAULT_HOSTNAME="boot-os"|
 /^REDHAT_SUPPORT_PRODUCT_VERSION=/d
 EOF
 
+echo "boot-os" > /etc/hostname
