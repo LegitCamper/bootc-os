@@ -41,7 +41,6 @@ packages=(
   htop
   stow
   git
-  steam-devices
   lxqt-policykit
   polkit-qt
 
@@ -81,7 +80,6 @@ packages=(
   glx-utils
   mesa*
   *vulkan*
-  gamescope
 
   # storage
   jmtpfs
@@ -123,6 +121,11 @@ packages=(
 
   # print
   hplip
+
+  # gaming
+  gamescope
+  steam
+  steam-devices
 
   # packages
   flatpak
