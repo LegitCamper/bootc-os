@@ -81,6 +81,7 @@ packages=(
   glx-utils
   mesa*
   *vulkan*
+  gamescope
 
   # storage
   jmtpfs
