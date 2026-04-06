@@ -18,5 +18,3 @@ done
 
 flatpak update --user -y --noninteractive
 
-flatpak override --user --env=SDL_JOYSTICK_DISABLE_UDEV=0 com.valvesoftware.Steam
-
