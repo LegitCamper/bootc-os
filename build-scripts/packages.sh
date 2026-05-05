@@ -131,6 +131,7 @@ packages=(
   flatpak
   toolbox
   podman
+  podman-compose
 
   # disk tools
   gnome-disk-utility
