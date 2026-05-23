@@ -146,6 +146,7 @@ dnf5 -y install "${packages[@]}" --exclude=usbmuxd
 
 packages=(
   console-login-helper-messages
+  brltty
 )
 
 dnf5 -y remove "${packages[@]}"
