@@ -10,6 +10,8 @@ packages=(
   io.missioncenter.MissionCenter
   org.onlyoffice.desktopeditors
   com.github.tchx84.Flatseal
+  io.github.ebonjaeger.bluejay
+
 )
 
 for package in "${packages[@]}"; do
