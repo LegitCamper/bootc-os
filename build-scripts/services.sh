@@ -13,6 +13,13 @@ system_services=(
   systemd-resolved.service
   bootc-fetch-apply-updates.service
   tailscaled.service
+  virtqemud.socket
+  virtnetworkd.socket
+  virtstoraged.socket
+  virtnodedevd.socket
+  virtsecretd.socket
+  virtnwfilterd.socket
+  virtinterfaced.socket
 )
 
 user_services=(

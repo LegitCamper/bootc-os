@@ -136,6 +136,10 @@ packages=(
   # disk tools
   gnome-disk-utility
   mediawriter
+
+  # virt
+  @virtualization
+  virt-manager
 )
 
 dnf5 -y install "${packages[@]}" --exclude=usbmuxd
