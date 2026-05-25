@@ -11,7 +11,6 @@ system_services=(
   podman-tcp.service
   flatpak-theme.service
   systemd-resolved.service
-  bootc-fetch-apply-updates.service
   tailscaled.service
   virtqemud.socket
   virtnetworkd.socket
@@ -20,6 +19,8 @@ system_services=(
   virtsecretd.socket
   virtnwfilterd.socket
   virtinterfaced.socket
+  bootc-fetch-apply-updates.service
+  repair-accounts.service
 )
 
 user_services=(
@@ -28,7 +29,7 @@ user_services=(
   gnome-keyring-daemon.socket
   gnome-keyring-daemon.service
   flatpak-package-installer.service
-  waypaperd.service
+  # waypaperd.service
 )
 
 mask_services=(
