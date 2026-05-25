@@ -14,6 +14,8 @@ coprs=(
   ulysg/xwayland-satellite
 
   che/nerd-fonts
+
+  lionheartp/Hyprland
 )
 
 for copr in "${coprs[@]}"; do

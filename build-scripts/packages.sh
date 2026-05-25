@@ -57,6 +57,7 @@ packages=(
   wl-clipboard
   thunar
   swaybg
+  waypaper
   alacritty
   dunst
   brightnessctl

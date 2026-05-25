@@ -28,14 +28,13 @@ user_services=(
   gnome-keyring-daemon.socket
   gnome-keyring-daemon.service
   flatpak-package-installer.service
+  waypaperd.service
 )
 
 mask_services=(
   logrotate.timer
   logrotate.service
   akmods-keygen.target
-  rpm-ostree-countme.timer
-  rpm-ostree-countme.service
   systemd-remount-fs.service
   flatpak-add-fedora-repos.service
   NetworkManager-wait-online.service
