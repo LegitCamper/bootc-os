@@ -1,7 +1,7 @@
 [Unit]
 Description=Repair orphaned passwd/group shadow database entries
 DefaultDependencies=no
-After=local-fs.target
+After=systemd-remount-fs.service
 Before=systemd-sysusers.service
 
 [Service]
