@@ -69,7 +69,7 @@ packages=(
 
   # VPN
   NetworkManager-openvpn
-  NetworkManager-wireguard
+  wireguard-tools
 
   # archive management
   p7zip
