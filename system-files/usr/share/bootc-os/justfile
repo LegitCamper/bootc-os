@@ -1,0 +1,57 @@
+# List available recipes
+default:
+    @just --unstable --justfile {{ justfile() }} --list
+
+# Interactively choose a recipe
+[private]
+choose:
+    @just --unstable --justfile {{ justfile() }} --choose
+
+# --- OS ---
+
+# Show current bootc deployment status
+status:
+    bootc status
+
+# Stage an OS update (applied on next reboot)
+update:
+    sudo bootc update
+
+# Roll back to the previous deployment
+rollback:
+    sudo bootc rollback
+
+# --- Flatpaks ---
+
+# Update all user Flatpaks now
+update-flatpaks:
+    flatpak update --user -y --noninteractive
+
+# --- Secure Boot ---
+
+# Enroll the Secure Boot MOK key (run once per machine after first signed boot)
+enroll-secure-boot:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    CERT=/etc/pki/sb-certs/bootc-os-sb.cer
+    if [[ ! -f "$CERT" ]]; then
+        echo "No signing cert found at $CERT — image was not built with Secure Boot signing."
+        exit 1
+    fi
+    if mokutil --test-key "$CERT" 2>/dev/null | grep -q "is already enrolled"; then
+        echo "MOK key is already enrolled."
+        exit 0
+    fi
+    echo "Enrolling Secure Boot MOK key..."
+    sudo mokutil --import "$CERT"
+    echo "Done. Reboot and confirm enrollment in the MokManager UI."
+
+# Check whether the Secure Boot MOK key is enrolled
+check-secure-boot:
+    #!/usr/bin/env bash
+    CERT=/etc/pki/sb-certs/bootc-os-sb.cer
+    if [[ ! -f "$CERT" ]]; then
+        echo "No signing cert found — image was not built with Secure Boot signing."
+        exit 0
+    fi
+    mokutil --test-key "$CERT"

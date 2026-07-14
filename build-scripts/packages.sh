@@ -33,6 +33,7 @@ packages=(
   systemd-container
   unzip
   whois
+  just
   inotify-tools
   cups
   gutenprint-cups
