@@ -1,6 +1,7 @@
 [Unit]
 Description=Ensure user Flatpaks are installed
-After=graphical-session.target
+After=graphical-session.target flathub-setup.service
+Wants=flathub-setup.service
 
 [Service]
 Type=oneshot

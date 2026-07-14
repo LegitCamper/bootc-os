@@ -21,7 +21,7 @@ packages=(
   pipewire-plugin-libcamera
   pavucontrol-qt
 
-  # system 
+  # system
   glibc-langpack-en
   audit
   audispd-plugins
@@ -43,6 +43,37 @@ packages=(
   git
   lxqt-policykit
   polkit-qt
+  bind-utils
+  hunspell-en-US
+  geoclue2
+  colord
+
+  # bluetooth
+  bluez
+  bluez-tools
+  blueman
+
+  # mDNS / local service discovery
+  avahi
+  nss-mdns
+
+  # firmware updates (LVFS / UEFI)
+  fwupd
+
+  # disk health monitoring
+  smartmontools
+
+  # TPM2 support
+  tpm2-tools
+  tpm2-tss
+
+  # VPN
+  NetworkManager-openvpn
+  NetworkManager-wireguard
+
+  # archive management
+  p7zip
+  file-roller
 
   # desktop
   jetbrains-mono-fonts
@@ -64,6 +95,11 @@ packages=(
   pamixer
   network-manager-applet
   libappindicator-gtk3
+  swaylock
+  swayidle
+  kanshi
+  imv
+  libva-utils
 
   # battery/perf
   tlp-rdw
@@ -111,6 +147,7 @@ packages=(
   xdg-desktop-portal
   xdg-desktop-portal-gtk
   xdg-desktop-portal-gnome
+  xdg-desktop-portal-wlr
 
    # theming
   papirus-icon-theme

@@ -21,10 +21,10 @@ DATE=$(date +%Y%m%d)
 echo "bootc-os" | tee "/etc/hostname"
 sed -i -f - /usr/lib/os-release <<EOF
 s|^NAME=.*|NAME=\"Bootc-os\"|
-s|^ID=.*|ID=\"booc-os\"|
+s|^ID=.*|ID=\"bootc-os\"|
 s|^VERSION=.*|VERSION=\"${RELEASE}.${DATE}\"|
-s|^PRETTY_NAME=.*|PRETTY_NAME=\"Bootc-os${RELEASE}.${DATE}\"|
-s|^DEFAULT_HOSTNAME=.*|DEFAULT_HOSTNAME="boot-os"|
+s|^PRETTY_NAME=.*|PRETTY_NAME=\"Bootc-os ${RELEASE}.${DATE}\"|
+s|^DEFAULT_HOSTNAME=.*|DEFAULT_HOSTNAME="bootc-os"|
 
 /^REDHAT_BUGZILLA_PRODUCT=/d
 /^REDHAT_BUGZILLA_PRODUCT_VERSION=/d

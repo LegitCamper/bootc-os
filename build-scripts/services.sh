@@ -21,6 +21,10 @@ system_services=(
   virtinterfaced.socket
   bootc-fetch-apply-updates.service
   repair-accounts.service
+  avahi-daemon.service
+  bluetooth.service
+  fwupd.service
+  smartd.service
 )
 
 user_services=(
@@ -29,6 +33,7 @@ user_services=(
   gnome-keyring-daemon.socket
   gnome-keyring-daemon.service
   flatpak-package-installer.service
+  flatpak-update.timer
   # waypaperd.service
 )
 

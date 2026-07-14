@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily update of user Flatpak applications
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=1d
+Persistent=true
+
+[Install]
+WantedBy=timers.target

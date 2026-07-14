@@ -1,3 +1,5 @@
+set -euxo pipefail
+
 # install jetbrains mono nerd font
 cd /usr/share/fonts
 mkdir -p JetBrainsMonoNerdFont

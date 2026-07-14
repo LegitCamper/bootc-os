@@ -20,7 +20,7 @@ export DRACUT_NO_XATTR=1
   --kver "$KVER" \
   --reproducible \
   --zstd -v \
-  --add ostree --add fido2 \
+  --add ostree --add fido2 --add tpm2-tss \
   -f "/usr/lib/modules/$KVER/initramfs.img"
 
 chmod 0600 "/usr/lib/modules/$KVER/initramfs.img"

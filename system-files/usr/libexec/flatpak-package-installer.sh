@@ -18,5 +18,3 @@ for package in "${packages[@]}"; do
   flatpak install --user -y --noninteractive flathub "$package"
 done
 
-flatpak update --user -y --noninteractive
-
