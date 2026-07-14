@@ -43,7 +43,7 @@ chmod 0600 "/usr/lib/modules/$KVER/initramfs.img"
 #
 SB_KEY=/run/secrets/sb_key
 # cert is committed to the repo and copied into the image via system-files/
-SB_CERT=/etc/pki/sb-certs/bootc-os-sb.pem
+SB_CERT=/etc/pki/sb-certs/bootc-os-sb.cer
 
 if [ -f "$SB_KEY" ] && [ -f "$SB_CERT" ]; then
   echo "Signing kernel for Secure Boot: $KIMAGE"

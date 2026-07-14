@@ -42,7 +42,7 @@ A [bootc](https://containers.github.io/bootc/) image — the OS is an OCI contai
 
 ## Secure Boot
 
-The CachyOS kernel is signed with a custom MOK key during the CI build. The public cert is at `/etc/pki/sb-certs/bootc-os-sb.pem` in the image. See `build-scripts/initramfs.sh` for key management notes.
+The CachyOS kernel is signed with a custom MOK key during the CI build. The public cert is at `/etc/pki/sb-certs/bootc-os-sb.cer` in the image. See `build-scripts/initramfs.sh` for key management notes.
 
 ## Building locally
 
