@@ -171,6 +171,10 @@ packages=(
   podman
   podman-compose
 
+  # secure boot
+  sbsigntools
+  mokutil
+
   # disk tools
   gnome-disk-utility
   mediawriter

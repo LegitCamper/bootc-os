@@ -25,6 +25,7 @@ system_services=(
   bluetooth.service
   fwupd.service
   smartd.service
+  enroll-mok.service
 )
 
 user_services=(

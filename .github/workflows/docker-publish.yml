@@ -62,6 +62,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          secrets: |
+            sb_key=${{ secrets.SECURE_BOOT_KEY }}
+            sb_cert=${{ secrets.SECURE_BOOT_CERT }}
 
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
