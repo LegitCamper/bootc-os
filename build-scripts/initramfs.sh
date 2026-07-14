@@ -34,7 +34,7 @@ chmod 0600 "/usr/lib/modules/$KVER/initramfs.img"
 #   Encode for GitHub Actions secrets (multiline PEM breaks secret injection):
 #     base64 -w0 sb_key.pem && echo   # -> SECURE_BOOT_KEY (repo secret, private key only)
 #   Delete sb_key.pem locally after storing.
-#   sb_cert.pem is public — commit it to system-files/etc/pki/sb-certs/bootc-os-sb.pem
+#   sb_cert.pem is public — commit it to system-files/etc/pki/sb-certs/bootc-os-sb.cer
 #
 #   First-boot MOK enrollment (once per machine):
 #     sudo mokutil --import /etc/pki/sb-certs/bootc-os-sb.cer
