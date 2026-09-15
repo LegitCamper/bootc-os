@@ -29,6 +29,7 @@ packages=(
   firewalld
   fuse
   fuse-devel
+  fuse3
   man-pages
   systemd-container
   unzip
