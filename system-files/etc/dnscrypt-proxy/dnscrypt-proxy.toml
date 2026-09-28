@@ -1,0 +1,56 @@
+# Minimal dnscrypt-proxy config — replaces the ~1000-line packaged default.
+# Role: encrypted upstream for systemd-resolved. resolved keeps the stub on
+# 127.0.0.53, forwards everything here, and this forwards over DoH.
+#
+#   app -> nss/resolve -> resolved (127.0.0.53) -> [IP_9c6e8e4a2b5f]:53 -> DoH -> dns.sawyer.services
+#
+# Verify the stamp decodes to the right host: bash build-scripts/check-dns.sh
+
+listen_addresses = ['[IP_9c6e8e4a2b5f]:53']
+max_clients = 250
+
+# DoH only. No DNSCrypt, no Oblivious DoH — we use exactly one static server.
+doh_servers = true
+dnscrypt_servers = false
+odoh_servers = false
+http3 = true
+
+server_names = ['sawyer-doh']
+
+ipv4_servers = true
+ipv6_servers = true
+
+# These filter the *public resolver list*, which we do not use (see [sources]).
+# Left false so a stamp without property bits set is still accepted.
+require_dnssec = false
+require_nolog = false
+require_nofilter = false
+
+# /etc/resolv.conf points at resolved, which points back here — resolving the
+# DoH hostname through it would deadlock. Always bootstrap out-of-band.
+ignore_system_dns = true
+bootstrap_resolvers = ['9.9.9.11:53', '8.8.8.8:53']
+
+timeout = 5000
+keepalive = 30
+
+# resolved caches too, but this one survives resolved restarts and absorbs the
+# DoH round-trip, which is the expensive part.
+cache = true
+cache_size = 4096
+cache_min_ttl = 2400
+cache_max_ttl = 86400
+cache_neg_min_ttl = 60
+cache_neg_max_ttl = 600
+
+log_level = 2
+
+# No [sources] section on purpose: fetching public-resolvers.md at boot needs
+# /var/cache writes and network before first query. A single static server
+# needs neither.
+[static]
+  [static.'sawyer-doh']
+  # sdns:// DoH stamp for https://dns.sawyer.services/dns-query
+  # No hardcoded IP — the host is behind fly.dev and its address rotates, so
+  # the bootstrap resolvers look it up at startup.
+  stamp = 'sdns://AgAAAAAAAAAAAAATZG5zLnNhd3llci5zZXJ2aWNlcwovZG5zLXF1ZXJ5'

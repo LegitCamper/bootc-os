@@ -15,7 +15,6 @@ cd -
 
 packages=(
   kernel-cachyos-lto
-  kernel-cachyos-lto-devel-matched
 )
 
 for pkg in kernel kernel-core kernel-modules kernel-modules-core; do

@@ -1,0 +1,12 @@
+# Imported from game-devices-udev through ublue-os-udev-rules. Keep only
+# desktop-wide virtual-device access here; controller vendor IDs stay in that
+# maintained package instead of being copied and going stale.
+
+# Steam Input, Wine tools, input-remapper, and accessibility apps create
+# virtual keyboards/controllers through uinput. logind grants the active seat
+# access without making the device world-writable.
+KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
+
+# Explicit fallback for old userspace. Current CachyOS kernels create ntsync as
+# 0666 themselves; uaccess also handles a future restrictive kernel default.
+KERNEL=="ntsync", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=ntsync"

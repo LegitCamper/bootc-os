@@ -1,18 +1,25 @@
 name: Docker
 
 on:
+  # Daily. The old weekly cron on this workflow was redundant with it.
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: '0 0 * * *'
   push:
     branches: [ "main" ]
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   FEDORA_VERSION: 43
+
+# Superseded pushes/PR updates stop burning a full build.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -20,7 +27,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-
       id-token: write
 
     steps:
@@ -49,6 +55,17 @@ jobs:
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # type=schedule entries only fire on the cron run, so this one
+          # workflow covers both the nightly and the push/tag builds.
+          tags: |
+            type=schedule,pattern=nightly
+            type=schedule,pattern=nightly-{{date 'YYYYMMDD'}}
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=raw,value=latest,enable=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          flavor: |
+            latest=false
 
       - name: Build and push Docker image
         id: build-and-push

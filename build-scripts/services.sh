@@ -10,6 +10,7 @@ system_services=(
   firewalld.service
   podman-tcp.service
   flatpak-theme.service
+  dnscrypt-proxy.service
   systemd-resolved.service
   tailscaled.service
   virtqemud.socket
@@ -26,7 +27,15 @@ system_services=(
   fwupd.service
   smartd.service
   enroll-mok.service
+  cups.socket
+  switcheroo-control.service
+  ratbagd.service
+  fstrim.timer
 )
+
+# D-Bus- or udev-activated: no [Install] section, so `systemctl enable` would
+# fail. They start on demand; listed here only as documentation.
+#   bolt.service, iio-sensor-proxy.service, fprintd.service  (dbus)
 
 user_services=(
   podman.socket
@@ -35,6 +44,7 @@ user_services=(
   gnome-keyring-daemon.service
   flatpak-package-installer.service
   flatpak-update.timer
+  udiskie.service
   # waypaperd.service
 )
 

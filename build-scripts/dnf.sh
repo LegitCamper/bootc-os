@@ -12,10 +12,6 @@ coprs=(
 
   yalter/niri
   ulysg/xwayland-satellite
-
-  che/nerd-fonts
-
-  lionheartp/Hyprland
 )
 
 for copr in "${coprs[@]}"; do
@@ -27,8 +23,8 @@ echo "priority=1" | tee -a /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:yalt
 echo "priority=2" | tee -a /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:ulysg:xwayland-satellite.repo
 dnf5 -y config-manager setopt "*fedora*".exclude="kernel-core-* kernel-modules-* kernel-uki-virt-*"
 
-dnf install -y \
+dnf5 -y install \
   https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
   https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-dnf config-manager setopt fedora-cisco-openh264.enabled=1
+dnf5 config-manager setopt fedora-cisco-openh264.enabled=1
 

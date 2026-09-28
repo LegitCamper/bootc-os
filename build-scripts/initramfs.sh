@@ -17,7 +17,7 @@ export DRACUT_NO_XATTR=1
   --no-hostonly \
   --kver "$KVER" \
   --reproducible \
-  --zstd -v \
+  --zstd \
   --add ostree --add fido2 --add tpm2-tss \
   -f "/usr/lib/modules/$KVER/initramfs.img"
 
@@ -42,7 +42,7 @@ chmod 0600 "/usr/lib/modules/$KVER/initramfs.img"
 #     mokutil --test-key /etc/pki/sb-certs/bootc-os-sb.cer  # verify enrollment
 #
 SB_KEY=/run/secrets/sb_key
-# cert is committed to the repo and copied into the image via system-files/
+# cert is committed to the repo (PEM) and copied into the image via system-files/
 SB_CERT=/etc/pki/sb-certs/bootc-os-sb.cer
 
 if [ -f "$SB_KEY" ] && [ -f "$SB_CERT" ]; then
@@ -60,12 +60,15 @@ if [ -f "$SB_KEY" ] && [ -f "$SB_CERT" ]; then
     --output "$KIMAGE" \
     "$KIMAGE"
 
-  # Generate DER format needed by mokutil --import
-  openssl x509 -in "$SB_CERT" -outform DER \
-    -out /etc/pki/sb-certs/bootc-os-sb.cer
-
   echo "Kernel signed successfully"
 else
   echo "WARNING: No Secure Boot signing key provided — kernel will not be signed"
+fi
+
+# mokutil --import needs DER. Convert unconditionally (not only in the signed
+# branch) so unsigned images don't ship a PEM that mokutil silently rejects.
+if [ -f "$SB_CERT" ]; then
+  openssl x509 -in "$SB_CERT" -outform DER -out "$SB_CERT.der"
+  mv "$SB_CERT.der" "$SB_CERT"
 fi
 

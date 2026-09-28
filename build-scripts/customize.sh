@@ -12,11 +12,11 @@ tar -xJf JetBrainsMono.tar.xz --strip-components=0
 rm JetBrainsMono.tar.xz
 
 # Rebuild font cache
-fc-cache -fv
+fc-cache -f
 
 
 # configures kvantum theme for qt
-git clone https://github.com/catppuccin/Kvantum.git
+git clone --depth 1 https://github.com/catppuccin/Kvantum.git
 mv Kvantum/themes/* /usr/share/Kvantum/
 rm -r Kvantum
 

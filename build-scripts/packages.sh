@@ -5,6 +5,8 @@ packages=(
   # wireless
   @networkmanager-submodules
   NetworkManager-wifi
+  linux-firmware          # full GPU/Wi-Fi/audio/peripheral firmware set via recommends
+  wireless-regdb
   iwlegacy-firmware
   iwlwifi-dvm-firmware
   iwlwifi-mvm-firmware
@@ -28,7 +30,6 @@ packages=(
   cifs-utils
   firewalld
   fuse
-  fuse-devel
   fuse3
   man-pages
   systemd-container
@@ -46,6 +47,7 @@ packages=(
   lxqt-policykit
   polkit-qt
   bind-utils
+  dnscrypt-proxy
   hunspell-en-US
   geoclue2
   colord
@@ -53,6 +55,7 @@ packages=(
   # bluetooth
   bluez
   bluez-tools
+  bluez-obexd
   blueman
 
   # mDNS / local service discovery
@@ -64,6 +67,17 @@ packages=(
 
   # disk health monitoring
   smartmontools
+
+  # peripherals
+  ublue-os-udev-rules     # controllers (8BitDo/DualSense/Switch Pro), Framework input module, USB NICs
+  bolt                    # thunderbolt dock / eGPU authorization
+  usb_modeswitch          # USB LTE dongles that boot as mass storage
+  iio-sensor-proxy        # accelerometer/ambient light -> niri auto-rotate
+  switcheroo-control      # "launch on discrete GPU" on hybrid graphics
+  libratbag-ratbagd       # gaming mouse DPI/buttons
+  piper                   # ratbagd GUI
+  fprintd                 # fingerprint reader
+  fprintd-pam
 
   # TPM2 support
   tpm2-tools
@@ -89,6 +103,9 @@ packages=(
   xwayland-satellite
   wl-clipboard
   thunar
+  thunar-volman           # removable media automount
+  thunar-archive-plugin   # right-click extract, pairs with file-roller
+  tumbler-extras          # thumbnails for video/pdf/raw
   swaybg
   waypaper
   alacritty
@@ -116,13 +133,24 @@ packages=(
   scxctl
 
   # graphics
+  # explicit, not mesa*/*vulkan* globs: those matched mingw32 cross-compile libs,
+  # ollama-vulkan, mesaflash (FPGA tool) and validation layers
   glx-utils
-  mesa*
-  *vulkan*
+  mesa-dri-drivers
+  mesa-vulkan-drivers
+  mesa-va-drivers
+  mesa-vdpau-drivers
+  vulkan-loader
+  vulkan-tools
 
   # storage
   jmtpfs
   gvfs-mtp
+  gvfs-smb                # network shares in Thunar
+  gvfs-afc                # iOS devices
+  gvfs-fuse               # expose gvfs mounts to non-GTK apps
+  exfatprogs              # SD cards, cameras
+  ntfs-3g                 # windows volumes
   libimobiledevice
   udisks2
   udiskie
@@ -146,23 +174,32 @@ packages=(
   libopenraw
 
   # system desktop portals
+  # niri ships /usr/share/xdg-desktop-portal/niri-portals.conf (gnome;gtk) and
+  # screencasts via -gnome. -wlr is not used; do not override in /etc/xdg.
   xdg-desktop-portal
   xdg-desktop-portal-gtk
   xdg-desktop-portal-gnome
-  xdg-desktop-portal-wlr
 
    # theming
   papirus-icon-theme
-  kvantum
+  kvantum                 # in F43 this is the Qt6 build (Provides: kvantum-qt6)
+  kvantum-qt5
+  qt5ct                   # Qt 5 platform theme configuration GUI
+  qt6ct
   qt5-qtgraphicaleffects
   qt5-qtquickcontrols2
   qt5-qtsvg
   gnome-themes-extra # gtk Adwaita-dark
 
-  # print
+  # print + scan
+  # ipp-usb (driverless USB printing) is F44+; revisit on the next rebase.
   hplip
+  sane-airscan            # driverless network scanning
+  sane-backends-drivers-scanners
+  simple-scan
 
   # gaming
+  gamemode
   gamescope
   steam
   steam-devices
