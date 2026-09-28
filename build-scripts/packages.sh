@@ -5,7 +5,7 @@ packages=(
   # wireless
   @networkmanager-submodules
   NetworkManager-wifi
-  linux-firmware          # full GPU/Wi-Fi/audio/peripheral firmware set via recommends
+  linux-firmware          # already in the base image; listed to pin the intent
   wireless-regdb
   iwlegacy-firmware
   iwlwifi-dvm-firmware
@@ -107,7 +107,9 @@ packages=(
   thunar-archive-plugin   # right-click extract, pairs with file-roller
   tumbler-extras          # thumbnails for video/pdf/raw
   swaybg
-  waypaper
+  # waypaper (GUI wallpaper picker for swaybg) is not packaged in Fedora, and
+  # solopasha/hyprland dropped its f43 chroot. Use `swaybg -i <file>` or the
+  # flathub build. Revisit if it lands in Fedora proper.
   alacritty
   dunst
   brightnessctl
