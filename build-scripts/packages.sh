@@ -147,7 +147,7 @@ packages=(
   jmtpfs
   gvfs-mtp
   gvfs-smb                # network shares in Thunar
-  gvfs-afc                # iOS devices
+  # no gvfs-afc: it hard-requires the usbmuxd daemon, excluded below
   gvfs-fuse               # expose gvfs mounts to non-GTK apps
   exfatprogs              # SD cards, cameras
   ntfs-3g                 # windows volumes
