@@ -1,0 +1,24 @@
+# System-wide default applications. Read via XDG_CONFIG_DIRS; a user's
+# ~/.config/mimeapps.list still wins.
+#
+# Thunar and file-roller already declare these types in their own .desktop
+# files and nothing else installed claims them, so most of this is making the
+# existing behaviour explicit rather than changing it. The exception is
+# application/x-cd-image: file-roller and gnome-disk-image-{mounter,writer}
+# all claim it, and the winner is otherwise arbitrary. Mounting an ISO is the
+# more useful default; file-roller stays in the Open With list.
+[Default Applications]
+inode/directory=thunar.desktop
+application/x-cd-image=gnome-disk-image-mounter.desktop
+
+application/zip=org.gnome.FileRoller.desktop
+application/gzip=org.gnome.FileRoller.desktop
+application/x-xz=org.gnome.FileRoller.desktop
+application/zstd=org.gnome.FileRoller.desktop
+application/x-7z-compressed=org.gnome.FileRoller.desktop
+application/vnd.rar=org.gnome.FileRoller.desktop
+application/x-tar=org.gnome.FileRoller.desktop
+application/x-compressed-tar=org.gnome.FileRoller.desktop
+application/x-xz-compressed-tar=org.gnome.FileRoller.desktop
+application/x-bzip-compressed-tar=org.gnome.FileRoller.desktop
+application/x-zstd-compressed-tar=org.gnome.FileRoller.desktop
