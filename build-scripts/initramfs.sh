@@ -13,6 +13,9 @@ fi
 
 depmod -a "$KVER"
 export DRACUT_NO_XATTR=1
+# /var is a per-RUN tmpfs and this layer runs no dnf to repopulate it, so
+# dracut's default tmpdir is missing. Recreate it; the tmpfs is discarded.
+mkdir -p -m 1777 /var/tmp
 /usr/bin/dracut \
   --no-hostonly \
   --kver "$KVER" \
