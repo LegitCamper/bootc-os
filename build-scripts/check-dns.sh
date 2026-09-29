@@ -8,6 +8,17 @@ expected_path="/dns-query"
 stamp="$(sed -n "s/^[[:space:]]*stamp = '\([^']*\)'.*/\1/p" "$config")"
 [[ -n "$stamp" ]] || { echo "No DNS stamp found in $config" >&2; exit 1; }
 
+# resolved forwards to whatever dnscrypt-proxy binds. If they disagree, or a
+# value is anything but a real loopback literal, every lookup fails at boot.
+listen="$(sed -n "s/^listen_addresses = \['\([^']*\)'\].*/\1/p" "$config")"
+resolved_conf="$(dirname "$config")/../systemd/resolved.conf.d/10-dnscrypt.conf"
+[[ -f $resolved_conf ]] || resolved_conf=system-files/etc/systemd/resolved.conf.d/10-dnscrypt.conf
+upstream="$(sed -n 's/^DNS=//p' "$resolved_conf")"
+
+[[ $listen == "127.0.0.1:53" ]] || { echo "listen_addresses is '$listen', want 127.0.0.1:53" >&2; exit 1; }
+[[ $upstream == "127.0.0.1" ]]  || { echo "resolved DNS= is '$upstream', want 127.0.0.1" >&2; exit 1; }
+echo "OK: resolved $upstream -> dnscrypt-proxy $listen"
+
 python3 - "$stamp" "$expected_host" "$expected_path" <<'PY'
 import base64
 import struct

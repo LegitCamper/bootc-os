@@ -2,11 +2,11 @@
 # Role: encrypted upstream for systemd-resolved. resolved keeps the stub on
 # 127.0.0.53, forwards everything here, and this forwards over DoH.
 #
-#   app -> nss/resolve -> resolved (127.0.0.53) -> [IP_9c6e8e4a2b5f]:53 -> DoH -> dns.sawyer.services
+#   app -> nss/resolve -> resolved (127.0.0.53) -> 127.0.0.1:53 -> DoH -> dns.sawyer.services
 #
 # Verify the stamp decodes to the right host: bash build-scripts/check-dns.sh
 
-listen_addresses = ['[IP_9c6e8e4a2b5f]:53']
+listen_addresses = ['127.0.0.1:53']
 max_clients = 250
 
 # DoH only. No DNSCrypt, no Oblivious DoH — we use exactly one static server.
