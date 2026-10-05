@@ -129,10 +129,9 @@ packages=(
   ksmtuned
   cachyos-ksm-settings
   cachyos-settings
-  scx-scheds-git
-  scx-tools-git
+  scx-scheds
+  scx-tools
   scx-manager
-  scxctl
 
   # graphics
   # explicit, not mesa*/*vulkan* globs: those matched mingw32 cross-compile libs,
@@ -141,7 +140,6 @@ packages=(
   mesa-dri-drivers
   mesa-vulkan-drivers
   mesa-va-drivers
-  mesa-vdpau-drivers
   vulkan-loader
   vulkan-tools
 
@@ -191,7 +189,6 @@ packages=(
   qt5-qtgraphicaleffects
   qt5-qtquickcontrols2
   qt5-qtsvg
-  gnome-themes-extra # gtk Adwaita-dark
 
   # print + scan
   hplip
