@@ -194,7 +194,6 @@ packages=(
   gnome-themes-extra # gtk Adwaita-dark
 
   # print + scan
-  # ipp-usb (driverless USB printing) is F44+; revisit on the next rebase.
   hplip
   sane-airscan            # driverless network scanning
   sane-backends-drivers-scanners

@@ -1,6 +1,6 @@
 # bootc-os
 
-Personal Fedora 43 bootc image. Built and published daily via GitHub Actions to `ghcr.io/legitcamper/bootc-os`. Images are cosign-signed.
+Personal Fedora 44 bootc image. Built and published daily via GitHub Actions to `ghcr.io/legitcamper/bootc-os`. Images are cosign-signed.
 
 ## What it is
 
@@ -10,7 +10,7 @@ A [bootc](https://containers.github.io/bootc/) image — the OS is an OCI contai
 
 | Component | Details |
 |---|---|
-| Base | `quay.io/fedora/fedora-bootc:43` |
+| Base | `quay.io/fedora/fedora-bootc:44` |
 | Kernel | CachyOS LTO (`bieszczaders/kernel-cachyos-lto` COPR), version-locked |
 | Display manager | greetd + tuigreet |
 | Compositor | niri (Wayland) + xwayland-satellite |
@@ -50,7 +50,7 @@ The CachyOS kernel is signed with a custom MOK key during the CI build. The publ
 ## Building locally
 
 ```bash
-docker buildx build --build-arg FEDORA_VERSION=43 -t bootc-os .
+docker buildx build --build-arg FEDORA_VERSION=44 -t bootc-os .
 ```
 
 Secure Boot signing is skipped when the `SECURE_BOOT_KEY` build secret is absent.

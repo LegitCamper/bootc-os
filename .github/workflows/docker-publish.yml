@@ -14,7 +14,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  FEDORA_VERSION: 43
+  FEDORA_VERSION: 44
 
 # Superseded pushes/PR updates stop burning a full build.
 concurrency:

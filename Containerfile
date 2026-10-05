@@ -1,7 +1,7 @@
 # Must be a literal: `ARG X=${X}` is self-referential and expands to empty, so
 # a local build with no --build-arg silently picks the wrong base image.
 # Keep in sync with FEDORA_VERSION in .github/workflows/docker-publish.yml.
-ARG FEDORA_VERSION=43
+ARG FEDORA_VERSION=44
 
 FROM scratch AS ctx
 COPY build-scripts /
