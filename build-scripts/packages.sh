@@ -223,6 +223,24 @@ packages=(
 
 dnf5 -y install "${packages[@]}" --exclude=usbmuxd
 
+mantle_version=0.3.0
+mantle_rpm="mantle-${mantle_version}-1.x86_64.rpm"
+mantle_path="/tmp/${mantle_rpm}"
+
+[[ "$(rpm -E '%{_arch}')" == x86_64 ]] || {
+  echo "Mantle ${mantle_version} RPM supports x86_64 only" >&2
+  exit 1
+}
+
+curl --fail --location --retry 3 \
+  --output "$mantle_path" \
+  "https://github.com/anasgets111/mantle/releases/download/v${mantle_version}/${mantle_rpm}"
+printf '%s  %s\n' \
+  '7a308ab3875fa0db802957fc655fbf4c11dae545ea29d2b22c291e2e9b67d9ac' \
+  "$mantle_path" | sha256sum --check --strict -
+dnf5 -y install "$mantle_path"
+rm -f "$mantle_path"
+
 packages=(
   console-login-helper-messages
 )

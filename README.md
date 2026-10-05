@@ -14,11 +14,10 @@ A [bootc](https://containers.github.io/bootc/) image — the OS is an OCI contai
 | Kernel | CachyOS LTO (`bieszczaders/kernel-cachyos-lto` COPR), version-locked |
 | Display manager | greetd + tuigreet |
 | Compositor | niri (Wayland) + xwayland-satellite |
+| Desktop shell | Mantle `v0.3.0` (checksum-pinned upstream x86_64 RPM); waybar and dunst retained for rollback |
 | Audio | Pipewire (pulseaudio, ALSA, JACK compat) + wireplumber |
-| Bar | waybar |
 | Terminal | alacritty |
 | File manager | thunar |
-| Notifications | dunst |
 | Theming | Catppuccin Macchiato (Kvantum), Papirus icons, Adwaita-dark GTK |
 | Fonts | JetBrains Mono Nerd Font |
 | Gaming | Steam + GameMode + gamescope; CachyOS scheduler/kernel tuning; maintained controller/uinput rules |
@@ -36,6 +35,9 @@ A [bootc](https://containers.github.io/bootc/) image — the OS is an OCI contai
 - RPMFusion free + nonfree
 - Cisco OpenH264
 - COPR: `bieszczaders/kernel-cachyos-lto`, `bieszczaders/kernel-cachyos-addons`, `ublue-os/packages`, `yalter/niri`, `ulysg/xwayland-satellite`
+- Mantle `v0.3.0`: checksum-verified upstream `x86_64` RPM. Change version, RPM filename, and SHA-256 together when upgrading.
+
+Mantle currently makes this image amd64/x86_64-only. Its RPM supplies the CLI and renderer, Lua metadata, PAM policy, and license; niri starts it from user configuration rather than a system service.
 
 ## Updates
 
