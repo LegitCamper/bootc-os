@@ -33,6 +33,8 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=secret,id=sb_key \
     bash -euxo pipefail -c '\
       /ctx/check-dns.sh /etc/dnscrypt-proxy/dnscrypt-proxy.toml && \
+      niri validate --config /etc/niri/config.kdl && \
+      mantle check -c /etc/mantle && \
       /ctx/services.sh && \
       /ctx/initramfs.sh && \
       /ctx/finish.sh  \

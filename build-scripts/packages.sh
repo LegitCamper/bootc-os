@@ -94,7 +94,6 @@ packages=(
   # desktop
   jetbrains-mono-fonts
   niri
-  waybar
   gnome-keyring
   gnome-keyring-pam
   greetd
@@ -107,11 +106,11 @@ packages=(
   thunar-archive-plugin   # right-click extract, pairs with file-roller
   tumbler-extras          # thumbnails for video/pdf/raw
   swaybg
+  desktop-backgrounds-basic
   # waypaper (GUI wallpaper picker for swaybg) is not packaged in Fedora, and
   # solopasha/hyprland dropped its f43 chroot. Use `swaybg -i <file>` or the
   # flathub build. Revisit if it lands in Fedora proper.
   alacritty
-  dunst
   brightnessctl
   pamixer
   network-manager-applet

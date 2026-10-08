@@ -14,7 +14,7 @@ A [bootc](https://containers.github.io/bootc/) image — the OS is an OCI contai
 | Kernel | CachyOS LTO (`bieszczaders/kernel-cachyos-lto` COPR), version-locked |
 | Display manager | greetd + tuigreet |
 | Compositor | niri (Wayland) + xwayland-satellite |
-| Desktop shell | Mantle `v0.3.0` (checksum-pinned upstream x86_64 RPM); waybar and dunst retained for rollback |
+| Desktop shell | Mantle `v0.3.0` with a system fallback config; user config overrides it |
 | Audio | Pipewire (pulseaudio, ALSA, JACK compat) + wireplumber |
 | Terminal | alacritty |
 | File manager | thunar |
@@ -37,7 +37,7 @@ A [bootc](https://containers.github.io/bootc/) image — the OS is an OCI contai
 - COPR: `bieszczaders/kernel-cachyos-lto`, `bieszczaders/kernel-cachyos-addons`, `ublue-os/packages`, `yalter/niri`, `ulysg/xwayland-satellite`
 - Mantle `v0.3.0`: checksum-verified upstream `x86_64` RPM. Change version, RPM filename, and SHA-256 together when upgrading.
 
-Mantle currently makes this image amd64/x86_64-only. Its RPM supplies the CLI and renderer, Lua metadata, PAM policy, and license; niri starts it from user configuration rather than a system service.
+Mantle currently makes this image amd64/x86_64-only. Its RPM supplies the CLI and renderer, Lua metadata, PAM policy, and license. The system niri config starts Mantle with `/etc/mantle/shell.lua` as a fallback; `~/.config/mantle/shell.lua` takes precedence. Niri loads `/etc/niri/config.kdl` unless the user supplies `~/.config/niri/config.kdl`. Niri starts Xwayland Satellite on demand.
 
 ## Updates
 
